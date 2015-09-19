@@ -109,7 +109,7 @@
             <div class="col-sm-8">
               <%= select_tag "component_type[name]", "", class: "form-control"%>
               <%= button_tag "Save",type:"button",class:"close" ,"data-dismiss"=>"modal", "aria-hidden"=>"true", class: "btn btn-success btn-sm", id: "add_component" %>
-OR
+              OR
               <%= link_to "Add Component Type",new_component_type_path, :data => { :colorbox => true, :colorbox_height => '300px', :colorbox_width => '564px', :colorbox_iframe => true }  %>
             </div>
             <div class="clearfix"></div>
@@ -125,6 +125,18 @@ OR
   </div>
 </div>
 
+<% unless current_page?(action: :new)%>
+    <% @project.components.each do |component| %>
+        <%= render partial: "component_details_form",locals: {component: component.component_type,project_component: component  } %>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= link_to("Edit",edit_component_path(component),class: "btn btn-default") %> <%= link_to("Delete","",class: "btn btn-danger") %>
+          <div class="clearfix"></div>
+            </br>
+          </div>
+        </div>
+    <% end %>
+<% end %>
 
 
 <div class="form-group col-sm-12">

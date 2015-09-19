@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :projects
+  resources :components
   resources :component_types
   get '/component_type_list' =>"component_types#component_type_list"
   get 'component_update' =>"projects#component_update"

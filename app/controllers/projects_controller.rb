@@ -29,11 +29,31 @@ class ProjectsController < ApplicationController
 
   def edit
     @project=Project.find(params[:id])
+
   end
 
   def delete
     @project=Project.find(params[:id])
     @project.destroy
+  end
+
+  def update
+    @project=Project.find(params[:id])
+    @project.update_attributes(project_params)
+
+    if @project.save
+      params.try(:[],:component).try(:[],:component_type_id).to_a.each_with_index do |component,index|
+        @project.components.create(:component_type_id=>component,
+                                   :partno=>params.try(:[],:component).try(:[],:partno)[index],
+                                   :desc=>params.try(:[],:component).try(:[],:desc)[index],
+                                   :manuf=>params.try(:[],:component).try(:[],:manuf)[index],
+                                   :qty=>params.try(:[],:component).try(:[],:qty)[index])
+      end
+
+      flash[:notice] = "Project updated Successfully"
+      render :js => "window.location = '#{projects_path}'"
+    end
+
   end
 
   def show

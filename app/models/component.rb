@@ -1,4 +1,4 @@
 class Component < ActiveRecord::Base
-  has_many :component_types
+  belongs_to :component_type
   belongs_to :project
 end
