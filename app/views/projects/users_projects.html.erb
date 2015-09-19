@@ -3,11 +3,12 @@
   <li ><%= link_to "Home", root_path %></li>
   <li class="active">My Projects</li>
 </ol>
-<h1 >Project List</h1>
+
 <div class="col-sm-12">
+  <h1 >My Projects</h1>
   <% if @projects.present? %>
       <div class="table-responsive table-responsive-visible ">
-        <table id="clientTable" class="table table-bordered">
+        <table class="table table-bordered">
           <thead>
           <tr>
             <th>Project Name</th>
