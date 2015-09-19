@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
- before_action :check_current_user,:only => [:edit,:update,:destroy]
+  before_action :check_current_user,:only => [:edit,:update,:destroy]
   def index
     @projects=Project.all
   end
@@ -74,6 +74,10 @@ class ProjectsController < ApplicationController
     @project.destroy
     flash[:notice] = "Project Deleted Successfully"
     render :js => "window.location.reload();"
+  end
+
+  def templates
+
   end
 
   def project_params
