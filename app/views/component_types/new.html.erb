@@ -1,0 +1,23 @@
+<div class="margin_top20 row">
+  <div class="col-sm-12">
+    <div class="main_content">
+
+
+      <div class="col-sm-6 col-sm-offset-2">
+        <h4 class="heading">Add Component Type</h4><br />
+        <%= form_tag(component_types_path, id: "component_types_details", method: :post, remote: true) do |f| %>
+
+            <%#= hidden_field_tag "carer[family_id]", @family.id %>
+
+            <%= render partial: "form" %>
+
+            <div class="form-group col-sm-12">
+              <%= submit_tag "Save", class: "btn btn-success pull-right" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="clearfix margin_bottom15px"></div>

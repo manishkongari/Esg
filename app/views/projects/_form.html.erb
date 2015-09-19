@@ -1,0 +1,115 @@
+<div class="form-group">
+  <label class="col-sm-4" for="project_projectname">Project Name:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[projectname]", @project.projectname, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_priority">Priority Number:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[priority]", @project.priority, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_contract">Contract Number:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[contract]", @project.contract, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_salescontact">Sales Person:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[salescontact]", @project.salescontact, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_engineer">Engineer
+    :</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[engineer]", @project.engineer, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="project_podate">PO Received:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[podate]", @project.podate, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_buildready">Panel Parts Arrived:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[buildready]", @project.buildready, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_surname">Date QC Tested:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[qcdate]", @project.qcdate, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_shipdate">Shipped Date:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[shipdate]", @project.shipdate, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="form-group">
+  <label class="col-sm-4" for="project_mtdr">MTDR:</label>
+  <div class="col-sm-8">
+    <%= text_field_tag "project[mtdr]", @project.mtdr, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="project_quicknote">Note:</label>
+  <div class="col-sm-8">
+    <%= text_area_tag "project[quicknote]", @project.quicknote, class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_type_name">Note:</label>
+  <div class="col-sm-8">
+    <%= select_tag "component_type[name]", "", class: "form-control"%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<script>
+    $("#component_type_name").select2({
+        ajax: {
+            url: "/component_type_list",
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            processResults: function (data, page) {
+
+                  return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2
+    });
+</script>
+
