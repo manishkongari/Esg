@@ -1,0 +1,21 @@
+<div class="margin_top20 row">
+  <div class="col-sm-12">
+    <div class="main_content">
+
+
+      <div class="col-sm-6 col-sm-offset-2">
+        <h4 class="heading">Edit Project</h4><br />
+        <%= form_tag(project_path, id: "project_details", method: :put, remote: true) do |f| %>
+
+            <%#= hidden_field_tag "carer[family_id]", @family.id %>
+    
+            <%= render partial: "form" %>
+
+
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="clearfix margin_bottom15px"></div>

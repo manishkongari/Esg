@@ -2,6 +2,7 @@ class ComponentTypesController < ApplicationController
 
   def new
     @component_type=ComponentType.new
+    render layout: 'blank'
   end
 
   def create
@@ -13,7 +14,7 @@ class ComponentTypesController < ApplicationController
   end
 
   def index
-
+    render layout: 'blank'
   end
 
   def edit
@@ -30,11 +31,11 @@ class ComponentTypesController < ApplicationController
 
   def component_type_list
 
-      if params[:q].length>1
-        component_type= ComponentType.where("name like '%#{params[:q]}%'")#
-        component_type_list=component_type.collect{|f| [:id=>f.id,:text=>(f.name.to_s)]}.flatten
-        render :text=> component_type_list.to_json
-      end
+    if params[:q].length>1
+      component_type= ComponentType.where("name like '%#{params[:q]}%'")#
+      component_type_list=component_type.collect{|f| [:id=>f.id,:text=>(f.name.to_s)]}.flatten
+      render :text=> component_type_list.to_json
+    end
   end
 
   def component_type_params

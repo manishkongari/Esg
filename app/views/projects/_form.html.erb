@@ -109,7 +109,8 @@
             <div class="col-sm-8">
               <%= select_tag "component_type[name]", "", class: "form-control"%>
               <%= button_tag "Save",type:"button",class:"close" ,"data-dismiss"=>"modal", "aria-hidden"=>"true", class: "btn btn-success btn-sm", id: "add_component" %>
-
+OR
+              <%= link_to "Add Component Type",new_component_type_path, :data => { :colorbox => true, :colorbox_height => '300px', :colorbox_width => '564px', :colorbox_iframe => true }  %>
             </div>
             <div class="clearfix"></div>
           </div>
