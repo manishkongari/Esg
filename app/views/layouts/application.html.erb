@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Esg</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,8 +24,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li> <%= link_to "","",class:" navbar-brand glyphicon glyphicon-blackboard" %></li>
-        <li> <%= link_to "","",class:" navbar-brand glyphicon glyphicon-folder-close" %></li>
+        <li> <%= link_to "",projects_path,class:" navbar-brand glyphicon glyphicon-blackboard" %></li>
+        <li> <%= link_to "", my_projects_path ,class:" navbar-brand glyphicon glyphicon-folder-close" %></li>
         <li> <%= link_to "", new_project_path ,class:" navbar-brand glyphicon glyphicon-star" %></li>
         <li> <%= link_to "","",class:" navbar-brand fa fa-archive " %></li>
 
@@ -50,7 +50,7 @@
   <% if notice.present? %>
       <div class="alert alert-success"><%= notice %><a class="close" data-dismiss="alert">x</a></div>
   <% elsif alert.present?%>
-      <div class="alert text-danger"><%= alert %></div>
+      <div class="alert alert-danger"><%= alert %> <a class="close" data-dismiss="alert">x</a></div>
   <%end %>
 </center>
 

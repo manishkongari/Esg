@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require colorbox-rails
-//= require turbolinks
+//= require bootstrap-datepicker
+//= require jquery.validate.min
+
 //= require bootstrap
 //= require select2.min
 //= require_tree .

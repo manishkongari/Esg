@@ -50,7 +50,7 @@
   <div class="clearfix"></div>
 </div>
 <div class="form-group">
-  <label class="col-sm-4" for="project_surname">Date QC Tested:</label>
+  <label class="col-sm-4" for="project_qcdate">Date QC Tested:</label>
   <div class="col-sm-8">
     <%= text_field_tag "project[qcdate]", @project.qcdate, class: "form-control"%>
   </div>
@@ -130,7 +130,8 @@
         <%= render partial: "component_details_form",locals: {component: component.component_type,project_component: component  } %>
         <div class="form-group">
           <div class="col-sm-12">
-            <%= link_to("Edit",edit_component_path(component),class: "btn btn-default") %> <%= link_to("Delete","",class: "btn btn-danger") %>
+            <%= link_to("Edit",edit_component_path(component),class: "btn btn-default") %>
+            <%= link_to("Delete",component_path(component),class: "btn btn-danger", method: :delete,remote:true, data: {confirm: "Are You sure?"}) %>
           <div class="clearfix"></div>
             </br>
           </div>

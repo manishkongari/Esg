@@ -1,0 +1,66 @@
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_ctype">Component Type:</label>
+  <div class="col-sm-8">
+    <%= select_tag "component[component_type_id]",options_for_select([[@component.try(:component_type).try(:name),@component.try(:component_type_id)]]),class:"form-control" %>
+    <script> $('#component_component_type_id').select2().select2('val','<%= @component.try(:component_type_id) %>')</script>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_partno">Part Number:</label>
+  <div class="col-sm-8">
+    <%= (text_field_tag "component[partno][]", @component.try(:partno), class: "form-control")%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_desc">Item Description:</label>
+  <div class="col-sm-8">
+    <%=  (text_area_tag "component[desc][]",@component.try(:desc), class: "form-control")%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_ctype">Manufacturer:</label>
+  <div class="col-sm-8">
+    <%=(text_field_tag "component[manuf][]", @component.try(:manuf), class: "form-control")%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-4" for="component_partno">Quantity:</label>
+  <div class="col-sm-8">
+    <%= (text_field_tag "component[qty][]", @component.try(:qty), class: "form-control")%>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<script>
+    $("#component_component_type_id").select2({
+        ajax: {
+            url: "/component_type_list",
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            processResults: function (data, page) {
+
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2
+    });
+</script>

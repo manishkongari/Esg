@@ -4,12 +4,11 @@
 
         <h1 >Welcome!</h1>
         <ul class="list-unstyled">
-          <li> <%= link_to "ESG Whiteboard","" %>     </li>
-          <li> <%= link_to "My Projects","" %>     </li>
-          <li> <%= link_to "New Project", new_project_path  %>     </li>
-          <li> <%= link_to "Archived Projects","" %>   </li>
+          <li><h4> <i class="glyphicon glyphicon-blackboard" ></i> <%= link_to "ESG Whiteboard",projects_path %></h4></li>
+          <li><h4> <i class="  glyphicon glyphicon-folder-close" ></i> <%= link_to "My Projects", my_projects_path  %></h4></li>
+          <li><h4> <i class="glyphicon glyphicon-star" ></i> <%= link_to "New Project", new_project_path  %> </h4></li>
+          <li><h4> <i class="fa fa-archive " ></i> <%= link_to "Archived Projects","" %> </h4>  </li>
         </ul>
-
 
   </div>
 </div>

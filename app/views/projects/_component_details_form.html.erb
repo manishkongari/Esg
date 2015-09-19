@@ -2,7 +2,7 @@
 <div class="form-group">
   <label class="col-sm-4" for="component_ctype">Component Type:</label>
   <div class="col-sm-8">
-    <%= component.name %>
+    <%= component.try(:name) %>
     <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[component_type_id][]", component.id, class: "form-control")%>
     <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[id][]", project_component.try(:id), class: "form-control")%>
   </div>

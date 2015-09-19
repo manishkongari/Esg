@@ -1,7 +1,12 @@
 class ProjectsController < ApplicationController
-
+ before_action :check_current_user,:only => [:edit,:update,:destroy]
   def index
     @projects=Project.all
+  end
+
+  def users_projects
+    @projects=Project.where("user_id = ?",current_user.id)
+
   end
 
   def new
@@ -28,17 +33,12 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project=Project.find(params[:id])
 
-  end
 
-  def delete
-    @project=Project.find(params[:id])
-    @project.destroy
   end
 
   def update
-    @project=Project.find(params[:id])
+
     @project.update_attributes(project_params)
 
     if @project.save
@@ -57,23 +57,34 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project=Project.find(params[:id])
+  end
 
+  def check_current_user
+    @project=Project.find(params[:id])
+
+    unless @project.try(:user_id)==current_user.id
+      flash[:alert] = "Page that you tried visit is not accessible"
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+
+    @project.destroy
+    flash[:notice] = "Project Deleted Successfully"
+    render :js => "window.location.reload();"
   end
 
   def project_params
     params.require(:project).permit(:projectname,:priority,:contract,:salescontact,:engineer,:podate,:buildready,:qcdate,:shipdate,:mtdr,:quicknote)
   end
 
-  def component_type_params
-
-  end
 
   def component_update
-
     @component=ComponentType.find(params[:value].to_i)
-
-
   end
+
   def component_params
     params.require(:component).permit(:partno,:desc,:manuf,:qty)
   end

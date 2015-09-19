@@ -1,7 +1,7 @@
 
 <ol class="breadcrumb">
   <li ><%= link_to "Home", root_path %></li>
-  <li class="active">ESG Whiteboard</li>
+  <li class="active">My Projects</li>
 </ol>
 <h1 >Project List</h1>
 <div class="col-sm-12">
@@ -26,6 +26,7 @@
           </tr>
           </thead>
           <tbody>
+
           <% @projects.each do |project| %>
               <tr>
                 <td><%= (project.projectname.present? ? project.projectname : "-") %></td>
@@ -40,15 +41,7 @@
                 <td><%= (project.mtdr.present? ? project.mtdr : "-") %></td>
                 <td><%= (project.quicknote.present? ? project.quicknote : "-") %></td>
                 <td><%= (project.user.present? ? ("#{project.user.first_name.try(:titleize)} #{project.user.last_name.try(:titleize)}") : ("-")) %></td>
-                <td style="width: 142px;">
-                  <%= link_to "Show",project_path(project) %>
-                  <%if project.try(:user_id)==current_user.try(:id) %>
-
-                      &nbsp;
-                      <%= link_to "Edit",edit_project_path(project)%>
-                      &nbsp; <%= link_to "Delete",project_path(project), method: :delete,remote:true, data: {confirm: "Are You sure?"}%>
-                  <% end %>
-                </td>
+                <td style="width: 142px;"><%= link_to "Show",project_path(project) %> &nbsp; <%= link_to "Edit",edit_project_path(project)%> &nbsp; <%= link_to "Delete",project_path(project), method: :delete,remote:true, data: {confirm: "Are You sure?"}%></td>
               </tr>
           <% end %>
           </tbody>

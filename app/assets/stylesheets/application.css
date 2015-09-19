@@ -13,7 +13,19 @@
  *= require bootstrap
  *= require select2.min
  *= require colorbox-rails
+ *= require bootstrap-datepicker3
  *= require_tree .
  *= require_self
 
  */
+.error {
+    border: 1px solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-top: 2px;
+    background: #f2dede;
+    border-color: #ebccd1;
+    color: #b94a48;
+    background-size: 20px 20px;
+    width: 100%;
+}

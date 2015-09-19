@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :components
   resources :component_types
+  get '/my_projects' =>"projects#users_projects"
   get '/component_type_list' =>"component_types#component_type_list"
   get 'component_update' =>"projects#component_update"
   # Example resource route with options:
