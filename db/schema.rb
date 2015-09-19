@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20150919164153) do
     t.string   "contract",     limit: 255
     t.string   "salescontact", limit: 255
     t.string   "engineer",     limit: 255
-    t.date     "podate"
     t.string   "buildready",   limit: 255
-    t.date     "qcdate"
-    t.date     "shipdate"
     t.string   "mtdr",         limit: 255
     t.text     "quicknote",    limit: 65535
     t.integer  "user_id",      limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.date     "qcdate"
+    t.date     "shipdate"
+    t.date     "podate"
   end
 
   create_table "users", force: :cascade do |t|

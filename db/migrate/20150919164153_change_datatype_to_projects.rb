@@ -1,7 +1,14 @@
 class ChangeDatatypeToProjects < ActiveRecord::Migration
-  def change
-    change_column :projects, :qcdate,  :date
-    change_column :projects, :shipdate,  :date
-    change_column :projects, :podate,  :date
+  def up
+    remove_column :projects, :qcdate
+    remove_column :projects, :shipdate
+    remove_column :projects, :podate
+    add_column :projects, :qcdate, :date
+    add_column :projects, :shipdate, :date
+    add_column :projects, :podate, :date
+  end
+
+  def down
+
   end
 end
