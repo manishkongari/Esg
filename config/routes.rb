@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :component_types
   get '/component_type_list' =>"component_types#component_type_list"
-
+  get 'component_update' =>"projects#component_update"
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -1,0 +1,70 @@
+
+<ol class="breadcrumb">
+  <li ><%= link_to "Home", root_path %></li>
+  <li class="active">Project List</li>
+</ol>
+<h1 >Project List</h1>
+      <div class="col-sm-12">
+        <% if @projects.present? %>
+            <div class="table-responsive table-responsive-visible ">
+              <table id="clientTable" class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Priority Number</th>
+                  <th>Contract Number</th>
+                  <th>Sales Person</th>
+                  <th>Engineer</th>
+                  <th>PO Received</th>
+                  <th>Panel Parts Arrived</th>
+                  <th>Date QC Tested</th>
+                  <th>Shipped Date</th>
+                  <th>MTDR</th>
+                  <th>Note</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @projects.each do |project| %>
+                    <tr>
+                      <td><%= (project.projectname.present? ? project.projectname : "-") %></td>
+                      <td><%= (project.priority.present? ? project.priority : "-") %></td>
+                      <td><%= (project.contract.present? ? project.contract : "-") %></td>
+                      <td><%= (project.salescontact.present? ? project.salescontact : "-") %></td>
+                      <td><%= (project.engineer.present? ? project.engineer : "-") %></td>
+                      <td><%= (project.podate.present? ? project.podate : "-") %></td>
+                      <td><%= (project.buildready.present? ? project.buildready : "-") %></td>
+                      <td><%= (project.qcdate.present? ? project.qcdate : "-") %></td>
+                      <td><%= (project.shipdate.present? ? project.shipdate : "-") %></td>
+                      <td><%= (project.mtdr.present? ? project.mtdr : "-") %></td>
+                      <td><%= (project.quicknote.present? ? project.quicknote : "-") %></td>
+                      <td><%= link_to "Show",project_path(project) %> &nbsp; <%= link_to "Edit",edit_project_path(project)%> &nbsp; <%= link_to "Delete",edit_project_path(project)%></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+        <% else %>
+            <div class="table-responsive table-responsive-visible">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>No Project Present.</th>
+                </tr>
+                </thead>
+              </table>
+            </div>
+        <% end %>
+
+            <div class="row">
+              <div class="pull-div-right">
+                <%= link_to  new_project_path, class: "btn btn-default" do %>
+                    ADD <i class="fa fa-plus-square"></i>
+                <% end %>
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

@@ -12,6 +12,7 @@
  *
  *= require bootstrap
  *= require select2.min
+ *= require colorbox-rails
  *= require_tree .
  *= require_self
 

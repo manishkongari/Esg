@@ -79,13 +79,56 @@
   <div class="clearfix"></div>
 </div>
 
-
 <div class="form-group">
-  <label class="col-sm-4" for="component_type_name">Note:</label>
+  <label class="col-sm-4" for="add_component_button"></label>
   <div class="col-sm-8">
-    <%= select_tag "component_type[name]", "", class: "form-control"%> <%= button_tag "Add Component" %>
+    <%= link_to  "#", class: "btn btn-default pull-right","data-toggle"=>"modal", "data-target"=>"#AddComponentModal" do %>
+        ADD Component <i class="fa fa-plus-square"></i>
+    <% end %>
+    <div class="clearfix"></div>
+    </br>
   </div>
-  <div class="clearfix"></div>
+</div>
+
+
+
+
+<div id="component_form_id"></div>
+<div class="modal fade" id="AddComponentModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add Component Type</h4>
+      </div>
+      <div class="modal-body">
+        <div id= "learning_disabilities_content" class="col-sm-6 client-show-all-tables table-responsive"  style="width:100%;">
+
+          <div class="form-group">
+            <label class="col-sm-4" for="client_relationship">Component Type:</label>
+            <div class="col-sm-8">
+              <%= select_tag "component_type[name]", "", class: "form-control"%>
+              <%= button_tag "Save",type:"button",class:"close" ,"data-dismiss"=>"modal", "aria-hidden"=>"true", class: "btn btn-success btn-sm", id: "add_component" %>
+
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+
+
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="form-group col-sm-12">
+
+  <%= submit_tag "Save", class: "btn btn-success pull-right" %>
 </div>
 
 
@@ -104,7 +147,7 @@
             },
             processResults: function (data, page) {
 
-                  return {
+                return {
                     results: data
                 };
             },
@@ -112,5 +155,17 @@
         },
         minimumInputLength: 2
     });
+    $("#add_component").click(function(){
+        value=$("#component_type_name").select2('val');
+        $.ajax({
+            type: 'GET',
+            url: "/component_update",
+            data: { value:value },
+            dataType: "script"
+        }).done(function(text) {
+
+        });
+    });
+
 </script>
 
