@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919095044) do
+ActiveRecord::Schema.define(version: 20150919164153) do
 
   create_table "component_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20150919095044) do
     t.string   "contract",     limit: 255
     t.string   "salescontact", limit: 255
     t.string   "engineer",     limit: 255
-    t.string   "podate",       limit: 255
+    t.date     "podate"
     t.string   "buildready",   limit: 255
-    t.string   "qcdate",       limit: 255
-    t.string   "shipdate",     limit: 255
+    t.date     "qcdate"
+    t.date     "shipdate"
     t.string   "mtdr",         limit: 255
     t.text     "quicknote",    limit: 65535
     t.integer  "user_id",      limit: 4

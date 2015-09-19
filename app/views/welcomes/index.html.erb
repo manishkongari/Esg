@@ -1,15 +1,59 @@
 <div class="container-fluid">
   <div class="col-sm-4 col-sm-offset-5" >
-
-
-        <h1 >Welcome!</h1>
+    <h1 >Welcome!</h1>
     <div class="clearfix"></div>
-        <ul class="list-unstyled">
-          <li><h4> <i class="glyphicon glyphicon-blackboard" ></i> <%= link_to "ESG Whiteboard",projects_path %></h4></li>
-          <li><h4> <i class="  glyphicon glyphicon-folder-close" ></i> <%= link_to "My Projects", my_projects_path  %></h4></li>
-          <li><h4> <i class="glyphicon glyphicon-star" ></i> <%= link_to "New Project", new_project_path  %> </h4></li>
-          <li><h4> <i class="fa fa-archive " ></i> <%= link_to "Archived Projects","" %> </h4>  </li>
-        </ul>
+    <ul class="list-unstyled">
+      <li><h4> <i class="glyphicon glyphicon-blackboard" ></i> <%= link_to "ESG Whiteboard",projects_path %></h4></li>
+      <li><h4> <i class="  glyphicon glyphicon-folder-close" ></i> <%= link_to "My Projects", my_projects_path%></h4></li>
+      <li><h4> <i class="glyphicon glyphicon-star" ></i> <%= link_to "New Project", "#","data-toggle"=>"modal", "data-target"=>"#ProjectModal"  %> </h4></li>
+      <li><h4> <i class="fa fa-archive " ></i> <%= link_to "Archived Projects","" %> </h4>  </li>
+    </ul>
 
+  </div>
+</div>
+
+
+<div class="modal fade" id="ProjectModal" tabindex="-1" role="dialog" aria-labelledby="myLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myLabel">Select Template</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag new_project_path,:method => 'GET'  do |f|%>
+
+            <table class="table table-bordered tablesorter">
+              <tbody>
+
+              <tr><td>VFD Panel</td>
+                <td>  <%= radio_button_tag "template_id","1", false%></td></tr>
+
+              <tr><td>HMI/PLC Panel</td>
+                <td>  <%= radio_button_tag "template_id","2", false%></td></tr>
+
+              <tr><td>Servo/Stepper Panel</td>
+                <td>  <%= radio_button_tag "template_id","3", false%></td></tr>
+
+              <tr><td>Display Panel</td>
+                <td>  <%= radio_button_tag "template_id","4", false%></td></tr>
+
+              <tr><td>Wireless Panel</td>
+                <td>  <%= radio_button_tag "template_id","5", false%></td></tr>
+
+              <tr><td>Cables</td>
+                <td>  <%= radio_button_tag "template_id","6", false%></td></tr>
+
+              <tr><td>None</td>
+                <td>  <%= radio_button_tag "template_id","0", true%></td></tr>
+
+              </tbody>
+            </table>
+            <%= submit_tag "ADD",class: "pull-right btn btn-default" %>
+
+        <% end %>
+        <div class="clearfix"></div>
+      </div>
+    </div>
   </div>
 </div>

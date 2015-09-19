@@ -1,42 +1,50 @@
-
-<div class="form-group">
-  <label class="col-sm-4" for="component_ctype">Component Type:</label>
-  <div class="col-sm-8">
-    <%= component.try(:name) %>
-    <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[component_type_id][]", component.id, class: "form-control")%>
-    <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[id][]", project_component.try(:id), class: "form-control")%>
+<div class="component_fields">
+  <div class="form-group">
+    <label class="col-sm-4" for="component_ctype">Component Type:</label>
+    <div class="col-sm-8">
+      <%= component.try(:name) %>
+      <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[component_type_id][]", component.id, class: "form-control")%>
+      <%= project_component.try(:id).present? ? ("") : (hidden_field_tag "component[id][]", project_component.try(:id), class: "form-control")%>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
-</div>
 
-<div class="form-group">
-  <label class="col-sm-4" for="component_partno">Part Number:</label>
-  <div class="col-sm-8">
-    <%= project_component.try(:id).present? ? (project_component.try(:partno)) : (text_field_tag "component[partno][]", project_component.try(:partno), class: "form-control")%>
+  <div class="form-group">
+    <label class="col-sm-4" for="component_partno">Part Number:</label>
+    <div class="col-sm-8">
+      <%= project_component.try(:id).present? ? (project_component.try(:partno)) : (text_field_tag "component[partno][]", project_component.try(:partno), class: "form-control")%>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
-</div>
 
-<div class="form-group">
-  <label class="col-sm-4" for="component_desc">Item Description:</label>
-  <div class="col-sm-8">
-    <%= project_component.try(:id).present? ? (project_component.try(:desc)) : (text_area_tag "component[desc][]",project_component.try(:desc), class: "form-control")%>
+  <div class="form-group">
+    <label class="col-sm-4" for="component_desc">Item Description:</label>
+    <div class="col-sm-8">
+      <%= project_component.try(:id).present? ? (project_component.try(:desc)) : (text_area_tag "component[desc][]",project_component.try(:desc), class: "form-control")%>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
-</div>
 
-<div class="form-group">
-  <label class="col-sm-4" for="component_ctype">Manufacturer:</label>
-  <div class="col-sm-8">
-    <%= project_component.try(:id).present? ? (project_component.try(:manuf)) : (text_field_tag "component[manuf][]", project_component.try(:manuf), class: "form-control")%>
+  <div class="form-group">
+    <label class="col-sm-4" for="component_ctype">Manufacturer:</label>
+    <div class="col-sm-8">
+      <%= project_component.try(:id).present? ? (project_component.try(:manuf)) : (text_field_tag "component[manuf][]", project_component.try(:manuf), class: "form-control")%>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
-</div>
 
-<div class="form-group">
-  <label class="col-sm-4" for="component_partno">Quantity:</label>
-  <div class="col-sm-8">
-    <%= project_component.try(:id).present? ? (project_component.try(:qty)) :  (text_field_tag "component[qty][]", project_component.try(:qty), class: "form-control")%>
+  <div class="form-group">
+    <label class="col-sm-4" for="component_partno">Quantity:</label>
+    <div class="col-sm-8">
+      <%= project_component.try(:id).present? ? (project_component.try(:qty)) :  (text_field_tag "component[qty][]", project_component.try(:qty), class: "form-control")%>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
+
+  <div class="form-group col-sm-12">
+    <%= project_component.try(:id).present? ? ("") : (link_to "Remove","#",onclick:"$(this).closest(\"div.component_fields\").remove();",title:"close",class:"pull-right btn btn-danger btn-sm") %>
+    <div class="clearfix"></br></div>
+  </div>
+
+
 </div>

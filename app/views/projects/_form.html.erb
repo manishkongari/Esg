@@ -1,3 +1,8 @@
+<style>
+  .select2-container{
+      width: 200px !important;
+  }
+</style>
 <div class="form-group">
   <label class="col-sm-4" for="project_projectname">Project Name:</label>
   <div class="col-sm-8">
@@ -107,9 +112,9 @@
           <div class="form-group">
             <label class="col-sm-4" for="client_relationship">Component Type:</label>
             <div class="col-sm-8">
-              <%= select_tag "component_type[name]", "", class: "form-control"%>
-              <%= button_tag "Save",type:"button",class:"close" ,"data-dismiss"=>"modal", "aria-hidden"=>"true", class: "btn btn-success btn-sm", id: "add_component" %>
-              OR
+              <%= select_tag "component_type[name]", "", class: "form-control"%> &nbsp;
+              <%= button_tag "Save",type:"button",class:"close" ,"data-dismiss"=>"modal", "aria-hidden"=>"true", class: "btn btn-success btn-sm", id: "add_component" %></br>
+              OR</br>
               <%= link_to "Add Component Type",new_component_type_path, :data => { :colorbox => true, :colorbox_height => '300px', :colorbox_width => '564px', :colorbox_iframe => true }  %>
             </div>
             <div class="clearfix"></div>
@@ -132,13 +137,19 @@
           <div class="col-sm-12">
             <%= link_to("Edit",edit_component_path(component),class: "btn btn-default") %>
             <%= link_to("Delete",component_path(component),class: "btn btn-danger", method: :delete,remote:true, data: {confirm: "Are You sure?"}) %>
-          <div class="clearfix"></div>
+            <div class="clearfix"></div>
             </br>
           </div>
         </div>
     <% end %>
 <% end %>
-
+<%if @component_types.present? %>
+    <h4 class="col-sm-12"><%= @template_type %></h4></br>
+    <div class="clearfix"></div>
+    <% @component_types.each do |component| %>
+        <%= render partial: "component_details_form",locals: {component: component,project_component: nil  } %>
+    <% end %>
+<% end %>
 
 <div class="form-group col-sm-12">
 
