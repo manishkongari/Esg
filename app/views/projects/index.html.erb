@@ -34,10 +34,10 @@
                 <td><%= (project.contract.present? ? project.contract : "-") %></td>
                 <td><%= (project.salescontact.present? ? project.salescontact : "-") %></td>
                 <td><%= (project.engineer.present? ? project.engineer : "-") %></td>
-                <td><%= (project.podate.present? ? project.podate : "-") %></td>
+                <td><%= (project.podate.present? ? project.podate.try(:strftime,("%d/%m/%Y")) : "-") %></td>
                 <td><%= (project.buildready.present? ? project.buildready : "-") %></td>
-                <td><%= (project.qcdate.present? ? project.qcdate : "-") %></td>
-                <td><%= (project.shipdate.present? ? project.shipdate : "-") %></td>
+                <td><%= (project.qcdate.present? ? project.qcdate.try(:strftime,("%d/%m/%Y")) : "-") %></td>
+                <td><%= (project.shipdate.present? ? project.shipdate.try(:strftime,("%d/%m/%Y")) : "-") %></td>
                 <td><%= (project.mtdr.present? ? project.mtdr : "-") %></td>
                 <td><%= (project.quicknote.present? ? project.quicknote : "-") %></td>
                 <td><%= (project.user.present? ? ("#{project.user.first_name.try(:titleize)} #{project.user.last_name.try(:titleize)}") : ("-")) %></td>

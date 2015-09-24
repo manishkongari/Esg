@@ -54,7 +54,7 @@
   <div class="form-group">
     <label class="col-sm-3">PO Received:</label>
     <div class="col-sm-9">
-      <%= @project.podate %>
+      <%= @project.podate.try(:strftime,("%d/%m/%Y")) %>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -70,7 +70,7 @@
   <div class="form-group">
     <label class="col-sm-3">Date QC Tested:</label>
     <div class="col-sm-9">
-      <%= @project.qcdate %>
+      <%= @project.qcdate.try(:strftime,("%d/%m/%Y")) %>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -78,7 +78,7 @@
   <div class="form-group">
     <label class="col-sm-3">Shipped Date:</label>
     <div class="col-sm-9">
-      <%= @project.shipdate %>
+      <%= @project.shipdate.try(:strftime,("%d/%m/%Y")) %>
     </div>
     <div class="clearfix"></div>
   </div>
