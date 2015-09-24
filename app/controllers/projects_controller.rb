@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
     @project=Project.find(params[:id])
 
     unless @project.try(:user_id)==current_user.id
-      flash[:alert] = "Page that you tried visit is not accessible"
+      flash[:alert] = "Page that you tried to visit is not accessible"
       redirect_to root_path
     end
   end
